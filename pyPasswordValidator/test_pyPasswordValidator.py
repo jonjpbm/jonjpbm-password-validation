@@ -35,7 +35,9 @@ class Test_pyPasswordValidator(unittest.TestCase):
         docstring
         """
         self.assertEqual(pyPasswordValidator.password_len(2),False)
-        self.assertEqual(pyPasswordValidator.password_len(64),False)
+        self.assertEqual(pyPasswordValidator.password_len(8),True)
+        self.assertEqual(pyPasswordValidator.password_len(65),False)
+        self.assertEqual(pyPasswordValidator.password_len(64),True)
 
 
 if __name__ == '__main__':
