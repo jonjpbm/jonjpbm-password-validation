@@ -6,35 +6,34 @@ My simple python password validation script to take over the world
 
 To install this cool app, you need to
 
-Linux:
-
+clone repo from my github
 ```bash
-pip install foobar
+git clone git@github.com:jonjpbm/jonjpbm-password-validation.git
 ```
 
-Windows:
-```sh
-edit autoexec.bat
-```
-
+Or just download the zip file
 
 ## Usage
+You can either import the module and use the methods
 
 ```python
 import password_validator
 
-password_validator.pluralize('word') # returns 'words'
-password_validator.pluralize('goose') # returns 'geese'
-password_validator.singularize('phenomena') # returns 'phenomenon'
+password_validator.is_ascii('agoodstring') # returns 'words'
+password_validator.remove_non_ascii('asdf¡Hola!' # returns 'geese'
+password_validator.password_len(input_len) # returns 'phenomenon'
+```
+or you can run the script as is
+```python
+cat small_input.txt | python3 password_validator.py weak_password_list.txt
 ```
 
 ##Testing
 
 ```python
-import password_validator
+python3 test_password_validator.py
 
 ```
-
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
