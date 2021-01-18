@@ -1,10 +1,9 @@
-from typing import Type
-import password_validator
+import pyPasswordValidator
 import unittest
 
-class Test_Password_validator(unittest.TestCase):
+class Test_pyPasswordValidator(unittest.TestCase):
     """
-    Test the functions in the password_validator module
+    Test the functions in the pyPasswordValidator module
     """
 
     def test_is_ascii(self):
@@ -12,12 +11,12 @@ class Test_Password_validator(unittest.TestCase):
         Simply test if true or fales is retruned as expected
         """
         #Good ascii string
-        self.assertEqual(password_validator.is_ascii('agoodstring'),True)
+        self.assertEqual(pyPasswordValidator.is_ascii('agoodstring'),True)
         #bad ascii string
-        self.assertEqual(password_validator.is_ascii('строка'),False)
+        self.assertEqual(pyPasswordValidator.is_ascii('строка'),False)
         #No string
         with self.assertRaises(TypeError):
-            password_validator.is_ascii()
+            pyPasswordValidator.is_ascii()
 
     def test_remove_non_ascii(self):
         """
@@ -25,9 +24,9 @@ class Test_Password_validator(unittest.TestCase):
         """
         #test if int is passed
         with self.assertRaises(TypeError):
-            password_validator.remove_non_ascii(123)
+            pyPasswordValidator.remove_non_ascii(123)
 
-        removed=password_validator.remove_non_ascii('asdf¡Hola!')
+        removed=pyPasswordValidator.remove_non_ascii('asdf¡Hola!')
         self.assertTrue(isinstance(removed, str))
 
 
@@ -35,8 +34,8 @@ class Test_Password_validator(unittest.TestCase):
         """
         docstring
         """
-        self.assertEqual(password_validator.password_len(2),False)
-        self.assertEqual(password_validator.password_len(64),False)
+        self.assertEqual(pyPasswordValidator.password_len(2),False)
+        self.assertEqual(pyPasswordValidator.password_len(64),False)
 
 
 if __name__ == '__main__':

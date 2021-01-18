@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """Module summary
@@ -59,7 +59,11 @@ def main():
             else:
                 raise Exception
         except Exception:
+            if(input_len <= 8):
                 print("{} -> Error: Too Short".format(input))
+            elif(input_len > 64):
+                print("{} -> Error: Too Long".format(input))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'Detect if a password meets requirements')
