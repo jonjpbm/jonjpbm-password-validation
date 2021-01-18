@@ -24,7 +24,7 @@ wget https://github.com/jonjpbm/pyPasswordValidator/archive/main.zip
 ```  
  - Pip install  
 ```bash  
-pip install pyPasswordValidator --user  
+pip3 install pyPasswordValidator --user  
 ```  
 ## Usage  
 ### Setup
@@ -44,11 +44,14 @@ password1
 ### You can either:  
 - Import the module and use the methods  
 ```python  
-import pyPasswordValidator
-  
-pyPasswordValidator.is_ascii('agoodstring') # returns boolean 
-pyPasswordValidator.remove_non_ascii('asdf¡Hola!' # returns string with asterisk replacing non ascii
-pyPasswordValidator.password_len(input_len) # returns int length of string  
+Python 3.6.9 (default, Oct  8 2020, 12:12:24)
+[GCC 8.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pyPasswordValidator as pv
+>>> pv.
+pv.argparse           pv.is_ascii(          pv.main(              pv.password_len(      pv.re                 pv.remove_non_ascii(  pv.sys
+>>> pv.is_ascii('test')
+True
 ```  
 - Can run the script as is
 ```bash
