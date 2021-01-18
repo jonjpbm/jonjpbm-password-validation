@@ -9,9 +9,6 @@ Attempts to detect if a password(s) passed meets requirements according to the T
 import re #used to replace non ascii
 import sys #used to read from stdin
 import argparse #create a help automagically
-import time #used to test how fast the script is
-
-start = time.time()
 
 def is_ascii(pwd_string):
     '''Takes in a string. Checks if ASCII or not. Returns true or false. '''
@@ -63,10 +60,6 @@ def main():
                 raise Exception
         except Exception:
                 print("{} -> Error: Too Short".format(input))
-
-
-    end = time.time()
-    print(end - start)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'Detect if a password meets requirements')
