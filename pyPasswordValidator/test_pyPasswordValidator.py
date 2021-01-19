@@ -29,16 +29,5 @@ class Test_pyPasswordValidator(unittest.TestCase):
         removed=pyPasswordValidator.remove_non_ascii('asdf¡Hola!')
         self.assertTrue(isinstance(removed, str))
 
-
-    def test_password_len(self):
-        """
-        docstring
-        """
-        self.assertEqual(pyPasswordValidator.password_len(2),False)
-        self.assertEqual(pyPasswordValidator.password_len(8),True)
-        self.assertEqual(pyPasswordValidator.password_len(65),False)
-        self.assertEqual(pyPasswordValidator.password_len(64),True)
-
-
 if __name__ == '__main__':
     unittest.main()

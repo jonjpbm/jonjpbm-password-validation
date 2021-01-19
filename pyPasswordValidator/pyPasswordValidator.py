@@ -9,6 +9,9 @@ Attempts to detect if a password(s) passed meets requirements according to the T
 import re #used to replace non ascii
 import sys #used to read from stdin
 import argparse #create a help automagically
+import time
+
+start = time.time()
 
 def is_ascii(pwd_string):
     '''Takes in a string. Checks if ASCII or not. Returns true or false. '''
@@ -18,52 +21,36 @@ def remove_non_ascii(pwd_string):
     '''Takes a string and attempts to replace all non-ASCII with asterisk.'''
     return re.sub(r'[^\x00-\x7F]','*', pwd_string)
 
-def password_len(password_len):
-    '''Takes a int for the string length and test if it is in with range'''
-    if ( password_len >= 8) and (password_len <= 64):
-        return True
-    else:
-        return False
-
 def main():
     for input in sys.stdin:
         input = input.strip()
         input_len = len(input)
 
-        try:
-            # 1. Have an 8 character minimum and
-            # 2. AT LEAST 64 character maximum
+        MIN_INPUT = 8
+        MAX_INPUT = 64
 
-            if (password_len(input_len) == True):
-
-                is_ascii_result = is_ascii(input)
-
-                # 3. Allow all ASCII characters and spaces (unicode optional)
-                try:
-                    if is_ascii_result == True:
-                        #4. Not be a common password
-                        try:
-                            with open(args.Path) as f:
-                                for line in f:
-                                    line = line.strip()
-                                    if (input == line):
-                                        print("{} -> Error: Too Common".format(input))
-                        except IOError:
-                            print("Passed File is not accessible")
-                    else:
-                        raise Exception
-                except:
-                    removed=remove_non_ascii(input)
-                    print("{} -> Error: Invalid Charaters".format(removed))
-
+        # 1. Have an 8 character minimum and
+        if (input_len < MIN_INPUT):
+            print("{} -> Error: Too Short".format(input))
+        # 2. AT LEAST 64 character maximum
+        elif (input_len > MAX_INPUT):
+            print("{} -> Error: Too Long".format(input))
+        else:
+            # 3. Allow all ASCII characters and spaces (unicode optional)
+            is_ascii_result = is_ascii(input)
+            if is_ascii_result == False:
+                removed=remove_non_ascii(input)
+                print("{} -> Error: Invalid Charaters".format(removed))
             else:
-                raise Exception
-        except Exception:
-            if(input_len <= 8):
-                print("{} -> Error: Too Short".format(input))
-            elif(input_len > 64):
-                print("{} -> Error: Too Long".format(input))
-
+                #4. Not be a common password
+                try:
+                    common_pass_set = set(line.strip() for line in open(args.Path))
+                    if (input in common_pass_set):
+                        print("{} -> Error: Too Common".format(input))
+                except IOError:
+                    print("Passed File is not accessible")
+    end = time.time()
+    print(end - start)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'Detect if a password meets requirements')
@@ -72,3 +59,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main()
+
