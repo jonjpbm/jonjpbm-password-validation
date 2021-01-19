@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyPasswordValidator',
-    version='0.1.3',
+    version='0.1.3.1',
     description='Attempts to detect if a password(s) passed meets requirements according to the The National Institute of Standards and Technology',
     url='https://github.com/jonjpbm/pyPasswordValidator',
     author='Jon Duarte',

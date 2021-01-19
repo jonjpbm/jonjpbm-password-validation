@@ -44,13 +44,11 @@ password1
 ### You can either:  
 - Import the module and use the methods  
 ```python  
-Python 3.6.9 (default, Oct  8 2020, 12:12:24)
-[GCC 8.4.0] on linux
+Python 3.8.5 (default, Jul 28 2020, 12:59:40) 
+[GCC 9.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> import pyPasswordValidator as pv
->>> pv.
-pv.argparse           pv.is_ascii(          pv.main(              pv.password_len(      pv.re                 pv.remove_non_ascii(  pv.sys
->>> pv.is_ascii('test')
+>>> import pyPasswordValidator.pyPasswordValidator as pv
+>>> pv.is_ascii('teststring')
 True
 ```  
 - Can run the script as is
